@@ -19,7 +19,7 @@ setup(
     url='https://github.com/mattpaletta/step',
     packages=find_packages(),
     include_package_data=True,
-    install_requires=["cuckoostash", "configparser", "pqdict"],
+    install_requires=["cuckoohash", "configparser", "pqdict"],
     setup_requires=["Cython"],
     author="Matthew Paletta",
     author_email="mattpaletta@gmail.com",
@@ -27,7 +27,7 @@ setup(
     license="BSD",
     dependency_links=[
         'git+https://github.com/mattpaletta/configparser.git@master#egg=configparser-0'
-        'git+https://github.com/mattpaletta/cuckoostash.git@master#egg=cuckoostash-0'
+        'git+https://github.com/mattpaletta/cuckoostash.git@master#egg=cuckoohash-0'
         'git+git://github.com/mattpaletta/pqdict.git@master#egg=pqdict-0'
     ],
     classifiers=[

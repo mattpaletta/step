@@ -12,3 +12,8 @@ install:
 script:
   # - mypy -m pqdict
   - python3 -m unittest discover -v -s test
+
+notifications:
+  email:
+    on_failure: change
+    on_success: never
