@@ -1,0 +1,13 @@
+language: python
+cache: pip
+
+python:
+  - "3.6"
+
+install:
+  - pip install mypy
+  - pip install .
+
+script:
+  # - mypy -m pqdict
+  - python3 -m unittest discover -v -s test
