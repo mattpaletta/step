@@ -1,5 +1,7 @@
 from os import cpu_count
 from typing import List, Union, Tuple, Type
+
+import numpy as np
 from cuckoo.cpu.cuckoo import CuckooCpu
 
 from step.level import Memory, GPU
@@ -18,10 +20,18 @@ class Cuckoo(Memory):
         if avail and gpu is not None:
             self._cuckoo = gpu(n, stash_size, num_hash_functions, num_parallel)
         else:
-            self._cuckoo = CuckooCpu(n, stash_size, num_hash_functions, num_parallel)
+            self._cuckoo = CuckooCpu(n, stash_size, num_hash_functions, parallel = True)
 
-    def set(self, key: List[int], value: List[int]) -> Tuple[List[Union[int, None]], List[int]]:
-        return self._cuckoo.set(key, value)
+    def set(self, key: List[int], value: List[np.uint64]) -> Tuple[List[Union[int, None]], List[int]]:
+        did_enter = self._cuckoo.set(key, value)
+
+        keys = []
+        vals = []
+        for i, v in zip(keys, value, did_enter):
+            if not did_enter:
+                keys.append(i)
+                vals.append(v)
+        return keys, vals
 
     def get(self, key: List[int]) -> List[Union[int, None]]:
         return self._cuckoo.get_multiple(key)

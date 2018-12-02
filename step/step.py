@@ -48,8 +48,8 @@ class Step(object):
         else:
             raise TypeError("Key must be type int or List[int]")
 
-    def set_single(self, key: int, value: int) -> int:
-        return self.set_batch([key], [value])[0]
+    def set_single(self, key: int, value: int) -> List[int]:
+        return self.set_batch([key], [value])
 
     def get_batch(self, key: List[int]) -> List[Union[int, None]]:
         output_array: List[int] = [None] * len(key)
@@ -109,7 +109,7 @@ class Step(object):
         indexes = []
         vals = []
         for i, v in enumerate(arr):
-            if v is None:
+            if v is None or v == -1:
                 vals.append(keys[i])
             indexes.append(v is None)
 
