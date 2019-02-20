@@ -1,5 +1,5 @@
-git+git://github.com/mattpaletta/configparser.git
-git+git://github.com/mattpaletta/pqdict.git
+config-parser
+threadlru
 git+git://github.com/mattpaletta/cuckoostash.git
 Cython
 pytest

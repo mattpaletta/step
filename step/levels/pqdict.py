@@ -1,12 +1,12 @@
 from typing import List, Union, Tuple
 
 from step.level import Memory
-from pqdict import PQDict as pq
+from threadlru import LRUCache
 
 
 class PQDict(Memory):
     def __init__(self, max_size: int):
-        self._pq_dict = pq(max_size)
+        self._pq_dict = LRUCache(max_size)
 
     def set(self, key: List[int], value: List[int]) -> Tuple[List[Union[int, None]], List[int]]:
         for k, v in zip(key, value):
