@@ -1,5 +1,5 @@
 config-parser
 threadlru
-git+git://github.com/mattpaletta/cuckoostash.git
+#git+git://github.com/mattpaletta/cuckoostash.git
 Cython
 pytest
