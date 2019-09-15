@@ -1,6 +1,6 @@
 from unittest import TestCase
 
-from step.levels.pqdict import PQDict
+from step.levels.pickle import Pickle
 from step.step import Step
 
 
@@ -10,9 +10,9 @@ dog = 2
 mouse = 3
 
 
-class TestStepPQDict(TestCase):
+class TestStepPickle(TestCase):
     def _get_step(self):
-        return Step(levels = [PQDict(max_size = 2)])
+        return Step(levels = [Pickle(directory = "/tmp")])
 
     def test_set_single(self):
         data = self._get_step()
@@ -36,18 +36,3 @@ class TestStepPQDict(TestCase):
 
         x = data.get(key = cat)
         assert x == 2, "Dictionary not updating values."
-
-    def test_set_replace(self):
-        # Assuming max_size = 2
-        data = self._get_step()
-
-        data.set(key = dog, value = 1)
-        data.set(key = cat, value = 2)
-        data.set(key = mouse, value = 3)
-
-        x = data.get(dog)
-        y = data.get(cat)
-        z = data.get(mouse)
-        assert z == 3, "Newest item not in dictionary"
-        assert y == 2, "Second newest item not in dictionary"
-        assert x is None, "Oldest item not replaced"

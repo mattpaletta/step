@@ -1,7 +1,7 @@
 from typing import Union, List, Dict, Tuple
 
 from step.level import Level
-from step.levels.cuckoo import Cuckoo
+#from step.levels.cuckoo import Cuckoo
 from step.levels.pickle import Pickle
 from step.levels.pqdict import PQDict
 
@@ -16,7 +16,8 @@ class Step(object):
             first_2_3 = int(max_size * (2 / 3))
             last_1_3 = max_size - first_2_3
 
-            levels = [Cuckoo(n = first_2_3), PQDict(max_size = last_1_3), Pickle()]
+            #levels = [Cuckoo(n = first_2_3), PQDict(max_size = last_1_3), Pickle()]
+            levels = [PQDict(max_size = last_1_3), Pickle()]
 
         assert len(levels) > 0, "Must have at least 1 level."
 
