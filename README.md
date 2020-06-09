@@ -86,3 +86,28 @@ Because we inherited from `level.Memory`, Step uses this to determine this is a 
 Steps will be ordered (by default) in the order specified.  It is recommended to put the GPU, Memory, and Disk levels in this order as this will enable maximum performance.
 
 In the event there are multiple volatile levels, data will always be written to the first, and moved to the next afterwards.
+
+## Information
+
+### Questions, Comments, Concerns, Queries, Qwibbles?
+
+If you have any questions, comments, or concerns please leave them in the GitHub
+Issues tracker:
+
+https://github.com/mattpaletta/step/issues
+
+### Bug reports
+
+If you discover any bugs, feel free to create an issue on GitHub. Please add as much information as
+possible to help us fixing the possible bug. We also encourage you to help even more by forking and
+sending us a pull request.
+
+https://github.com/mattpaletta/step/issues
+
+## Maintainers
+
+* Matthew Paletta (https://github.com/mattpaletta)
+
+## License
+
+GPL-3.0 License. Copyright 2020 Matthew Paletta. http://mrated.ca
