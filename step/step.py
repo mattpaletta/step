@@ -5,13 +5,11 @@ from step.level import Level
 from step.levels.pickle import Pickle
 from step.levels.pqdict import PQDict
 
-
 class Step(object):
     __slots__ = ["_levels", "_replicated"]
 
     def __init__(self, levels: List[Level] = None, replicated = False, max_size = 100):
         # Replicated is whether they should be a cache for each other, or a split
-
         if levels is None:
             first_2_3 = int(max_size * (2 / 3))
             last_1_3 = max_size - first_2_3
@@ -21,13 +19,14 @@ class Step(object):
 
         assert len(levels) > 0, "Must have at least 1 level."
 
-        # self._levels: Dict[str, Level] = {}
         self._levels = levels
 
         for level in levels:
             assert issubclass(level.__class__, Level), "Levels must be a subclass of step.Level"
-            # self._levels.update({level.__name__.lower(), level})
-
+        if replicated:
+            # Must contain at least one non-volatile level
+            num_non_volatile = sum([1 if level.is_volatile() else 0 for level in levels])
+            assert num_non_volatile > 0, "Replicated step must contain at least one non-volatile storage"
         self._replicated = replicated
 
     def get(self, key: Union[int, List[int]]) -> Union[int, List[int]]:

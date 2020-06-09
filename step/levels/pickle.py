@@ -5,7 +5,7 @@ from step.level import Disk
 from threading import Lock
 
 class Pickle(Disk):
-    def __init__(self, directory: str, partitions: int = 10, not_exist_ok = True) -> None:
+    def __init__(self, directory: str = os.path.join(os.curdir, "step", "data"), partitions: int = 10, not_exist_ok = True) -> None:
         if not os.path.exists(directory):
             os.makedirs(directory, exist_ok = True)
         self._directory = directory

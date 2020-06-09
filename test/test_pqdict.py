@@ -9,7 +9,6 @@ cat = 1
 dog = 2
 mouse = 3
 
-
 class TestStepPQDict(TestCase):
     def _get_step(self):
         return Step(levels = [PQDict(max_size = 2)])

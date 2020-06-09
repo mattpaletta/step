@@ -3,7 +3,6 @@ from typing import List, Union, Tuple
 from step.level import Memory
 from threadlru import LRUCache
 
-
 class PQDict(Memory):
     def __init__(self, max_size: int):
         self._pq_dict = LRUCache(max_size)
